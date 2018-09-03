@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "236629216277",
+    "firebase_url": "https://prasangiresearchapp.firebaseio.com",
+    "project_id": "prasangiresearchapp",
+    "storage_bucket": "prasangiresearchapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236629216277:android:d300db6824721eef",
+        "android_client_info": {
+          "package_name": "com.example.kaush.researchapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236629216277-un85imqct71l82hakutlfg99poth06m3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kaush.researchapp",
+            "certificate_hash": "01e821637210aadf2f77c8164d7368a9a4555c1a"
+          }
+        },
+        {
+          "client_id": "236629216277-rugubscmpsj2ves2ia5u25hum1jtuqt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaufGYn8lD2DQCjTg-_ccnhEZGKGJ_Bvo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236629216277-rugubscmpsj2ves2ia5u25hum1jtuqt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
