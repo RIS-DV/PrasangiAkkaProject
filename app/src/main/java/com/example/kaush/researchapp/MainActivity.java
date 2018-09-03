@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.QuickContactBadge;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements
         GoogleMap.OnMyLocationButtonClickListener,
@@ -34,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference userReference;
+
     private GoogleMap mMap;
 
     private double lat = 0.0, lan = 0.0;
@@ -94,7 +102,17 @@ public class MainActivity extends AppCompatActivity implements
             latTextView = (TextView)findViewById(R.id.lat);
             lanTextView = (TextView)findViewById(R.id.lan);
 
-            updateActivity(activity, category[0], place[0], lat, lan);
+            mDatabase = FirebaseDatabase.getInstance();
+            userReference = mDatabase.getReference("users").child(currentUser.getUid());
+
+            FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    updateActivity(activity, category[0], place[0], lat, lan);
+                }
+            });
+
 
         } else {
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
@@ -103,7 +121,10 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
-    private void updateActivity(String activity, String s, String s1, double lat, double lan) {
+    private void updateActivity(String activity, String category, String place, double lat, double lan) {
+        userReference.child("activities").setValue(new Activity(category, null, activity, 0, place));
+        userReference.child("locations").setValue(new com.example.kaush.researchapp.Location(lat, lan));
+
     }
 
     @Override
