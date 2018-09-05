@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements
 
 
         } else {
-            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(MainActivity.this, PhoneActivity.class);
             startActivity(loginIntent);
             finish();
         }

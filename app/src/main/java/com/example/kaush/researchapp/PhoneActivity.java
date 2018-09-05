@@ -66,7 +66,7 @@ public class PhoneActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mAuth.getCurrentUser();
         if (mFirebaseUser != null) {
-            startActivity(new Intent(PhoneActivity.this, MainActivity.class));
+            startActivity(new Intent(PhoneActivity.this, LoginActivity.class));
             finish();
         }
 
@@ -129,6 +129,8 @@ public class PhoneActivity extends AppCompatActivity {
 
                 updateUI(STATE_VERIFY_SUCCESS, phoneAuthCredential);
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+
+                startActivity(new Intent(PhoneActivity.this, LoginActivity.class));
             }
 
             @Override
